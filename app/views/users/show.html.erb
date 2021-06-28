@@ -39,12 +39,8 @@
   <% @attendances.each do |day| %>
     <tr>
       <td><%= l(day.worked_on, format: :short) %></td>
-      <td><%= $days_of_the_week[day.worked_on.wday] %></td>
-      <td>
-        <% if btn_text = attendance_state(day) %>
-          <%= link_to "#{btn_text}登録", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
-        <% end %>
-      </td>
+      <td class='<%= "wday#{day.worked_on.wday}"%>'> 
+      <%=$days_of_the_week[day.worked_on.wday] %></td>
       <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
       <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
       <td>
